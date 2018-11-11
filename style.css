@@ -53,6 +53,10 @@ nav .current a, nav li a:hover {
     margin: 20px 0;
 }
 
+.tutorial-step-note {
+    background-color: #CCC;
+}
+
 footer {
     background-color: #637F83;
     padding: 13px 0;
