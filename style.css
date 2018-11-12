@@ -5,6 +5,7 @@ secondary buttons/links: "blueberry" #4392F1
 secondary buttons /text: "black olive" #393E41, #637F83
 icons/primary buttons: "flame" #EF5728
 another color: "sea blue" #006494
+secondary background: #f6f6f6
 */
 
 body {
@@ -55,6 +56,10 @@ nav .current a, nav li a:hover {
 
 .tutorial-step-note {
     background-color: #CCC;
+}
+
+.img-wrapper img{
+    margin: 0 auto
 }
 
 footer {
