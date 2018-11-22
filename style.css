@@ -20,6 +20,11 @@ body {
 
 a {
     text-decoration: none;
+    color: #4392F1;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 nav {
@@ -45,16 +50,21 @@ nav li a {
     padding: 10px 15px;
 }
 
-nav .current a, nav li a:hover {
+nav .active a, nav li a:hover {
     color: #fff;
     background-color: #e4551d;
 }
 
-.tutorial-step {
+.tutorial-section {
     margin: 20px 0;
+    display: none;
 }
 
-.tutorial-step-note {
+.tutorial-section.active {
+    display: block;
+}
+
+.tutorial-section-note {
     background-color: #CCC;
 }
 
@@ -62,9 +72,26 @@ nav .current a, nav li a:hover {
     margin: 0 auto
 }
 
+code {
+    background-color: #f5f6f7;
+}
+
+.code-snippet {
+    display: block;
+    padding: 10px;
+}
+
+.svg-canvas {
+    margin: 10px 0;
+}
+
+.svg-canvas svg {
+    box-shadow: 0px 0px 10px 0px #ccc;
+}
+
 footer {
     background-color: #637F83;
-    padding: 13px 0;
+    padding: 10px 0;
     text-align: center;
     color: #fff;
     font-size: 14px;
