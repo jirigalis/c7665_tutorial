@@ -1,0 +1,68 @@
+<html lang="cs">
+    <head>
+        <meta charset="UTF-8">
+        <title>C7665 - Tutoriál</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+<body>
+    <header>
+        <h1>Základy užití knihovny SVG.js</h1>
+    </header>
+    <nav>
+        <ul>
+            <li>
+                <a href="./index.html" title="Začínáme">Začínáme</a>
+            </li>
+            <li>
+                <a href="./krok2.html" title="Krok 2"">Krok 2</a>
+            </li>
+            <li class="active">
+                <a href="./krok3.html" title="Krok 3"">Krok 3</a>
+            </li>
+            <li>
+                <a href="./krok4.html" title="Krok 4"">Krok 4</a>
+            </li>
+            <li>
+                <a href="./krok5.html" title="Krok 5"">Krok 5</a>
+            </li>
+            <li>
+                <a href="./test.html" title="Test">Test</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <section class="tutorial-section" id="krok3">
+            <article>
+                <h2>Reference SVG objektů</h2>
+                <p>
+                    Nalezení a získání odkazu na SVG elementy jsou jedny z nejpoužívanějších operací při práci s SVG. K hledání SVG elemetů na stránce slouží především funkce <code>SVG.get()</code> a <code>SVG.select()</code>. První z nich, funkce <code>SVG.get()</code>, slouží pro vybírání elementu vytvořeného knihovnou SVG.js na základě atributu <code>id</code>, který je funkci předán jako parametr:
+                </p>
+                <code class="code-snippet">
+                    var element = SVG.get("my_element")
+                </code>
+                <p>
+                    Mnohem zajímavější je druhá zmíněná funkce <code>SVG.select()</code>, která umí hledat SVG elementy pomocí CSS selektorů (více o CSS selektorech se dočtete <a href="https://www.w3schools.com/cssref/css_selectors.asp" target="blank" title="CSS Selectors Reference">zde</a>). Příklad:
+                </p>
+                <code class="code-snippet">
+                    var elements = SVG.select('rect.my-class').fill('#f06')
+                </code>
+                Tento příkaz vyhledá v daném SVG canvasu všechny objekty <code>&lt;rect&gt;</code> se třídou <code>my-class</code> a poté jim nastaví výplň barvy <code>#f06</code>.
+                <p>
+                    Funkci <code>select()</code> také můžeme zavolat na konkrétním elementem, v tomto případě se pak neprohledává celý canvas, ale jen potomci elementu, nad kterým je funkce <code>select()</code> volána.
+                </p>
+                <code class="code-snippet">
+                    var element = SVG.select('#my_rect'); //vybereme objekt se třídou my_rect <br />
+                    var blueChilds = element.select('.blue') //vybereme všechny potomky objektu s id = my_rect, které mají třídu "blue"
+                </code>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <p>
+            Toto je patička
+        </p>
+    </footer>
+    <script src="./js/svg.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

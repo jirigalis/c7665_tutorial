@@ -1,0 +1,80 @@
+<html lang="cs">
+    <head>
+        <meta charset="UTF-8">
+        <title>C7665 - Tutoriál</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+<body>
+    <header>
+        <h1>Základy užití knihovny SVG.js</h1>
+    </header>
+    <nav>
+        <ul>
+            <li>
+                <a href="./index.html" title="Začínáme">Začínáme</a>
+            </li>
+            <li>
+                <a href="./krok2.html" title="Krok 2"">Krok 2</a>
+            </li>
+            <li>
+                <a href="./krok3.html" title="Krok 3"">Krok 3</a>
+            </li>
+            <li class="active">
+                <a href="./krok4.html" title="Krok 4"">Krok 4</a>
+            </li>
+            <li>
+                <a href="./krok5.html" title="Krok 5"">Krok 5</a>
+            </li>
+            <li>
+                <a href="./test.html" title="Test">Test</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <section class="tutorial-section" id="krok4">
+            <article>
+                <h2>Manipulace s SVG objekty</h2>
+                <p>
+                    Nastavování hotnot různých atributů objektů v canvasu je další ze základních úkonů, které při práci s SVG provádíme. Nastavení hodnoty jednoho atributu provedeme pomocí funkce <code>attr()</code>:
+                </p>
+                <code class="code-snippet">rect.attr('x', 50)</code>
+                <p>
+                    Můžeme nastavit i více atributů najednou:
+                </p>
+                <code class="code-snippet">
+                    rect.attr({
+                        x: 50, <br />
+                        y: 30, <br />
+                        fill: '#f06', <br />
+                        'fill-opacity': 0.5, <br />
+                        stroke: '#000', <br />
+                        'stroke-width': 10 <br />
+                    })
+                </code>
+                <div class="svg-canvas" id="step4attributes"></div>
+                <p>Atribut můžeme také odstranit:</p>
+                <code class="code-snippet">
+                    rect.attr('fill', null)
+                </code>
+                <p>
+                    V tom případě by předchozí ukázka vypadala takto:
+                </p>
+                <div class="svg-canvas" id="step4removeattr"></div>
+                <p>
+                    V některý situacích můžeme chtít pouze získat hodnotu některého atributu:
+                </p>
+                <code class="code-snippet">
+                    var x = rect.attr('x')
+                </code>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <p>
+            Toto je patička
+        </p>
+    </footer>
+    <script src="./js/svg.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
