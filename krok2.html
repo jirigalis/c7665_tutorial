@@ -2,7 +2,8 @@
     <head>
         <meta charset="UTF-8">
         <title>C7665 - Tutoriál</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="./css/main.css">
+        <link rel="stylesheet" href="./css/googlecode.css">
     </head>
 <body>
     <header>
@@ -28,58 +29,74 @@
             <li>
                 <a href="./test.html" title="Test">Test</a>
             </li>
+            <li>
+                <a href="./zdroje.html" title="Zdroje">Zdroje</a>
+            </li>
         </ul>
     </nav>
     <main>
         <section class="tutorial-section" id="krok2">
+            <h2></a>SVG Elementy</h2>
             <article>
-                <h2></a>SVG Elementy</h2>
                 <p>
                     Základní funkcí, která v SVG.js zastřešuje všechny objekty, je <code>SVG.Element</code>. Mocnější je pak funkce <code>SVG.Shape</code>. Každému elementu lze nastavit atributy <code>fill</code> a <code>stroke</code> (výplň a tah).
                 </p>
+                <p>
+                    Nejprve si vytvoříme SVG canvas, který si pojmenujene <code>draw</code>:
+                </p>
+                <pre><code class="javascript">var draw = SVG('svg-canvas')</code></pre>
+            </article>
+            <article>
                 <h3>Obdélník</h3>
                 <p>
                     Pro vykreslení libovolného obdélníku slouží funkce <code>SVG.rect(width, height)</code>. Tato funkce rozšiřuje <code>SVG.Shape</code> a má dva parametry - délku strany <em>a</em> a strany <em>b</em>. 
                 </p>
-                <code class="code-snippet">var rect = draw.rect(100, 100)</code>
+                <pre><code class="javascript">var rect = draw.rect(100, 100)</code></pre>
                 <p>
                     Výsledek:
                 </p>
                 <div class="svg-canvas" id="step2rect"></div>
+            </article>
+            <article>
                 <h3>Kruh</h3>
                 <p>
                     Abychom vykreslili kruh, použijeme funkci <code>SVG.circle(diameter)</code> s jedním parametrem - průměr kruhu:
                 </p>
-                <code class="code-snippet">var circle = draw.circle(100)</code>
+                <pre><code class="javascript">var circle = draw.circle(100)</code></pre>
                 <p>
                     Výsledek:
                 </p>
                 <div class="svg-canvas" id="step2circle"></div>
+            </article>
+            <article>
                 <h3>Čára</h3>
                 <p>
                     Vykreslení čáry může být provedeno několika způsoby. Nejjednodušším způsobem je využití funkce <code>draw.line()</code>:
                 </p>
-                <code class="code-snippet">var line = draw.line(0,0,100, 150).stroke({width: 1}) </code>
+                <pre><code class="javascript">var line = draw.line(0,0,100, 150).stroke({width: 1}) </code></pre>
                 <p>
                     Výsledek:
                 </p>
                 <div class="svg-canvas" id="step2line"></div>
+                <p>Funkce má čtyři parametry, které představují souřadnice krajních bodů čáry. Pokud tedy chceme vykreslit vodorovnou čáru, musí se ypsilonové souřadnice obou bodů shodovat.</p>
+            </article>
+            <article>
                 <h3>Mnohoúhelník</h3>
                 <p>
                     Mnohoúhelník je uzavřený útvar tvořený množinou spojených rovných čar. Jednoduchý příklad mnohoúhelníku vypadá např. takto:
                 </p>
-                <code class="code-snippet">var polygon = draw.polygon('0,0 100,50 50, 100').fill('none').stroke({width: 1})</code>
+                <pre><code class="javascript">var polygon = draw.polygon('0,0 100,50 50, 100').fill('none').stroke({width: 1})</code></pre>
                 <p>
                     Výsledek:
                 </p>
                 <div class="svg-canvas" id="step2polygon"></div>
+            </article>
+            <article>
                 <h3>Cesta</h3>
                 <p>
                     Nejsložitěší variantou SVG elementu je Cesta. Pomocí cesty můžeme vykreslit prakticky libovolný tvar, avšak psaní kódu cesty není vždy jednoduché. Velmi jednoduchý příklad může vypadat třeba takto:
                 </p>
-                <code class="code-snippet">
-                    var path = draw.path('M0 0 H50 A20 20 0 1 0 100 50 v25 C50 125 0 85 0 85 z');
-                </code>
+                <pre><code class="javascript">var path = draw.path('M0 0 H50 A20 20 0 1 0 100 50 v25 C50 125 0 85 0 85 z');</code></pre>
                 <p>
                     Výsledek:
                 </p>
@@ -87,13 +104,13 @@
                 <p>
                     Jednotlivá čísla, která jsou zadána jako parametr funkce <code>draw.path()</code>, posuptně určují směr a souřadnice cesty. Více detailu viz <a href="http://www.w3.org/TR/SVG/paths.html#PathData" target="blank" title="SVG Dokumentace - Cesta">Dokumentace</a>.
                 </p>
+            </article>
+            <article>
                 <h3>Text</h3>
                 <p>
                     Pomocí SVG můžeme vykreslit i text, ovšem narozdíl od HTML, práce s textem v SVG je složitější. Nejjednodušším způsobem je využití funkce <code>text()</code>:
                 </p>
-                <code class="code-snippet">
-                    var text = draw.text("Lorem ipsum dolor sit amet consectetur.\nCras sodales imperdiet auctor.")
-                </code>
+                <pre><code class="javascript">var text = draw.text("Lorem ipsum dolor sit amet consectetur.\nCras sodales imperdiet auctor.")</code></pre>
                 <p>
                     Výsledek:
                 </p>
@@ -106,10 +123,12 @@
     </main>
     <footer>
         <p>
-            Toto je patička
+            Kateřina Křížová &copy; 2019
         </p>
     </footer>
     <script src="./js/svg.min.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/krok2.js"></script>
+    <script src="./js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>

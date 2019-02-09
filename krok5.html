@@ -2,7 +2,8 @@
     <head>
         <meta charset="UTF-8">
         <title>C7665 - Tutoriál</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="./css/main.css">
+        <link rel="stylesheet" href="./css/googlecode.css">
     </head>
 <body>
     <header>
@@ -28,6 +29,9 @@
             <li>
                 <a href="./test.html" title="Test">Test</a>
             </li>
+            <li>
+                <a href="./zdroje.html" title="Zdroje">Zdroje</a>
+            </li>
         </ul>
     </nav>
     <main>
@@ -37,38 +41,85 @@
                 <p>
                     Animace elementů je velmi podobná manipulaci objektů pomocí funkce <code>attr()</code>. Jediným rozdílem je využití metody <code>animate()</code>. Animovanou změnu výplně objektu provedeme např. takto:
                 </p>
-                <code class="code-snippet">
-                    rect.animate().attr({fill: '#f03'})
-                </code>
+                <pre><code class="javascript">rect.animate().attr({fill: '#f03'})</code></pre>
+                <button class="btn" id="animateFillBtn">Spustit animaci</button>
+                <div class="svg-canvas" id="animateFill"></div>
                 <p>
                     Změnu pozice pomocí animace můžeme provést takto:
                 </p>
-                <code class="code-snippet">
-                    rect.animate().attr({x: 100, y:200})<br />
-                    rect.animate().move(100, 200) //metoda move() - zjednodušené pozicování
-                </code>
+                <pre><code class="javascript">rect.animate().attr({x: 150, y:30})
+rect.animate().move(150, 30) //metoda move() - zjednodušené pozicování</code></pre>
+                <button class="btn" id="animateMoveBtn">Spustit animaci</button>
+                <div class="svg-canvas" id="animateMoveCanvas"></div>
+                <p>
+                    Můžeme provést rotaci či změnu velikosti:
+                </p>
+                <pre><code class="javascript">rect.animate().rotate(45) //rotace o 45 stupňů
+rect.animate().scale(2) //dvojnásobné zvětšení, lze použít záporná i desetinná čísla</code></pre>
+                <button class="btn" id="animateRotationBtn">Spustit animaci rotace</button>
+                <button class="btn" id="animateScaleBtn">Spustit animaci změny velikosti</button>
+                <button class="btn" id="animateRotationResetBtn">Reset</button>
+                <div class="svg-canvas" id=animateRotationCanvas></div>
+                <p>
+                    Za povšimnutí stojí způsob, jakým zapisujeme animaci jednotlivých události (posun, změna barvy atp.). Nejdříve použijeme metodu <code>animate()</code> a k ní přidáme další námi zvolenou metodu. Tomuto způsobu zápisu se říká <em>řetězení metod</em>.
+                </p>
+                <p>
+                    Animace, které jsme doposud prováděli, měly všechny stejný průběh - měly nastavenou výchozí rychlost - 1000 ms, výchozí styl animace a výchozí zpoždění. Někdy však chceme tyto parametry nastavit podle vlastních preferencí. To učiníme tak, že metodě <code>animate()</code> předáme 3 parametry:
+                </p>
+                <pre>
+                    <code class="javascript">rect.animate(2000, '>', 1000).attr({ fill: '#f03'});</code>
+                </pre>
+                Prvním parametrem funkce <code>animate()</code> je doba trvání animace, druhým parametrem je typ animace (zde '>' - ease out), třetím parametrem je zpoždění animace.
+                <h3>Vyzkoušejte si jednotlivé animace:</h3>
+                <form>
+                    <div>
+                        Pozice X: <input type="number" id="x_pos" value="0" class="svg-control" />
+                        Pozice Y: <input type="number" id="y_pos" value="0" class="svg-control" />
+                        Úhel rotace: <input type="number" id="rotation" value="0" class="svg-control" />°
+                    </div>
+                    <div>
+                        Změna velikosti: <input type="number" id="scale" value="1" class="svg-control" step="0.1"/>
+                    </div>
+                    <div>
+                        Čas animace: <input type="number" id="duration" value="1000" class="svg-control" step="100"/> ms
+                        Typ animace:
+                        <select class="svg-control" id="animation_type">
+                            <option value="<>">ease in and out</option>
+                            <option value=">">ease out</option>
+                            <option value="<">ease in</option>
+                            <option value="-">linear</option>
+                        </select>
+                        Zpoždění: <input type="number" id="animation_delay" class="svg-control" value="0" step="100"/> ms
+                    </div>
+                    <button class="btn" type="reset">Reset</button>
+                    <button class="btn" type="button" id="animateBtn">Spustit animaci</button>                    
+                </form>
+                <div class="svg-canvas" id="animationCanvas"></div>
+            </article>
+            <article>
                 <h2>Události</h2>
                 <p>
-                    Každému elementu můžou být přiřazeny různé události. Základní událostí je <em>kliknutí</em>, které přidáme na objekt pomocí funkce <code>click()</code>. Parametrem t=to funkce je opět funkce, která se vykoná při kliknutí na objekt.
+                    Každému elementu můžou být přiřazeny různé události. Základní událostí je <em>kliknutí</em>, které přidáme na objekt pomocí funkce <code>click()</code>. Parametrem této funkce je opět funkce, která se vykoná při kliknutí na objekt.
                 </p>
-                <code class="code-snippet">
-                    element.click(function() {<br />
-                        this.fill({color: '#f06'})<br />
-                    })
-                </code>
+                <pre><code class="javascript">element.click(function() {
+    this.fill({color: '#f06'})
+})</code></pre>
                 <p>Odstranění události je velmi jednoduché:</p>
-                <code class="code-snippet">
-                    element.click(null)
-                </code>                
+                <pre><code class="javascript">element.click(null)</code></pre>
+                <h3>Vyzkoušejte si:</h3>
+                <button class="btn" id="eventResetBtn">Reset</button>
+                <div class="svg-canvas" id="eventCanvas"></div>             
             </article>
         </section>
     </main>
     <footer>
         <p>
-            Toto je patička
+            Kateřina Křížová &copy; 2019
         </p>
     </footer>
     <script src="./js/svg.min.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/krok5.js"></script>
+    <script src="./js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>

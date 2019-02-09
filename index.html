@@ -2,7 +2,8 @@
     <head>
         <meta charset="UTF-8">
         <title>C7665 - Tutoriál</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="./css/main.css">
+        <link rel="stylesheet" href="./css/googlecode.css">
     </head>
 <body>
     <header>
@@ -28,222 +29,51 @@
             <li>
                 <a href="./test.html" title="Test">Test</a>
             </li>
+            <li>
+                <a href="./zdroje.html" title="Zdroje">Zdroje</a>
+            </li>
         </ul>
     </nav>
     <main>
         <section class="tutorial-section" id="zaciname">
+            <h2>Začínáme</h2>
             <article>
-                <h2>Začínáme</h2>
                 <h3>Instalace</h3>
                 <p>
                     Abychom mohli začít používat knihovnu SVG.js, je třeba ji načíst do naší webové stránky. To uděláme stažením knihovny ze stránek <a href="http://www.svgjs.com" target="blank">SVG.js</a> a přidáním následujícího řádku kódu těsně před ukončující tag <code>&lt;/body&gt;</body></code>
                 </p>
-                <code class="code-snippet">
-                    &lt;script src="./js/svg.min.js"&gt;&lt;/script&gt;
-                </code>
+                <pre><code class="html">&lt;script src="./js/svg.min.js"&gt;&lt;/script&gt;</code></pre>
                 <p>
                     Druhou variantou je načíst nejnovější verzi knihony z webu <a href="https://cdnjs.com/libraries/svg.js" target="blank">cdnjs.com</a>:
                 </p>                
-                <code class="code-snippet">
-                    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.6/svg.min.js"&gt;&lt;/script&gt;
-                </code>
+                <pre><code class="html">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.6/svg.min.js"&gt;&lt;/script&gt;</code></pre>
+            </article>
+            <article>
                 <h3>Příprava</h3>
                 <p>
                     SVG.js předpokládá, že ve své HTML stránce máme HTML element s nastaveným atributem id, který knihovna využije jako obálku:
                 </p>
-                <code class="code-snippet">
-                    &lt;div id="drawing"&gt;&lt;/div&gt;
-                </code>
+                <pre><code class="html">&lt;div id="drawing"&gt;&lt;/div&gt;</code></pre>
                 <p>
                     Dalším krokem je využítí funkce <code>SVG()</code> k vytvoření SVG dokumentu uvnitř naší obálky. Kód, který umístíme do JS souboru, může vypadat takto:
                 </p>
-                <code class="code-snippet">
-                    var draw = SVG('drawing').size(300, 300)<br/>
-                    var rectangle = draw.rect(100, 100).attr({ fill: '#f06'})
-                </code>
+                <pre><code class="javascript">var draw = SVG('drawing').size(300, 300)
+var rectangle = draw.rect(100, 100).attr({ fill: '#f06'})</code></pre>
                 <div class="svg-canvas" id="step1element"></div>
                 <p>
                     Argumentem funkce <code>SVG</code> je id HTML elementu, který bude použit pro vykreslování SVG - tím vznikne plátno - tzv. <em>canvas</em>. Canvasu je poté nastavena velikost 300x300 px. Na druhém řádku kódu je vykreslen obdélník (funkce <code>rect()</code>) s rozměry 100x100px a je mu nastaven atribut <code>fill</code> (=barevná výplň)
                 </p>
             </article>
         </section>
-        <section class="tutorial-section" id="krok2">
-            <article>
-                <h2></a>SVG Elementy</h2>
-                <p>
-                    Základní funkcí, která v SVG.js zastřešuje všechny objekty, je <code>SVG.Element</code>. Mocnější je pak funkce <code>SVG.Shape</code>. Každému elementu lze nastavit atributy <code>fill</code> a <code>stroke</code> (výplň a tah).
-                </p>
-                <h3>Obdélník</h3>
-                <p>
-                    Pro vykreslení libovolného obdélníku slouží funkce <code>SVG.rect(width, height)</code>. Tato funkce rozšiřuje <code>SVG.Shape</code> a má dva parametry - délku strany <em>a</em> a strany <em>b</em>. 
-                </p>
-                <code class="code-snippet">var rect = draw.rect(100, 100)</code>
-                <p>
-                    Výsledek:
-                </p>
-                <div class="svg-canvas" id="step2rect"></div>
-                <h3>Kruh</h3>
-                <p>
-                    Abychom vykreslili kruh, použijeme funkci <code>SVG.circle(diameter)</code> s jedním parametrem - průměr kruhu:
-                </p>
-                <code class="code-snippet">var circle = draw.circle(100)</code>
-                <p>
-                    Výsledek:
-                </p>
-                <div class="svg-canvas" id="step2circle"></div>
-                <h3>Čára</h3>
-                <p>
-                    Vykreslení čáry může být provedeno několika způsoby. Nejjednodušším způsobem je využití funkce <code>draw.line()</code>:
-                </p>
-                <code class="code-snippet">var line = draw.line(0,0,100, 150).stroke({width: 1}) </code>
-                <p>
-                    Výsledek:
-                </p>
-                <div class="svg-canvas" id="step2line"></div>
-                <h3>Mnohoúhelník</h3>
-                <p>
-                    Mnohoúhelník je uzavřený útvar tvořený množinou spojených rovných čar. Jednoduchý příklad mnohoúhelníku vypadá např. takto:
-                </p>
-                <code class="code-snippet">var polygon = draw.polygon('0,0 100,50 50, 100').fill('none').stroke({width: 1})</code>
-                <p>
-                    Výsledek:
-                </p>
-                <div class="svg-canvas" id="step2polygon"></div>
-                <h3>Cesta</h3>
-                <p>
-                    Nejsložitěší variantou SVG elementu je Cesta. Pomocí cesty můžeme vykreslit prakticky libovolný tvar, avšak psaní kódu cesty není vždy jednoduché. Velmi jednoduchý příklad může vypadat třeba takto:
-                </p>
-                <code class="code-snippet">
-                    var path = draw.path('M0 0 H50 A20 20 0 1 0 100 50 v25 C50 125 0 85 0 85 z');
-                </code>
-                <p>
-                    Výsledek:
-                </p>
-                <div class="svg-canvas" id="step2path"></div>
-                <p>
-                    Jednotlivá čísla, která jsou zadána jako parametr funkce <code>draw.path()</code>, posuptně určují směr a souřadnice cesty. Více detailu viz <a href="http://www.w3.org/TR/SVG/paths.html#PathData" target="blank" title="SVG Dokumentace - Cesta">Dokumentace</a>.
-                </p>
-                <h3>Text</h3>
-                <p>
-                    Pomocí SVG můžeme vykreslit i text, ovšem narozdíl od HTML, práce s textem v SVG je složitější. Nejjednodušším způsobem je využití funkce <code>text()</code>:
-                </p>
-                <code class="code-snippet">
-                    var text = draw.text("Lorem ipsum dolor sit amet consectetur.\nCras sodales imperdiet auctor.")
-                </code>
-                <p>
-                    Výsledek:
-                </p>
-                <div class="svg-canvas" id="step2text"></div>
-                <p>
-                    Uvedený kód vypíše text oddělený novými řádky (znak <code>\n</code>). Tato metoda nám však neposkytuje mnoho možností.
-                </p>
-            </article>
-        </section>
-        <section class="tutorial-section" id="krok3">
-            <article>
-                <h2>Reference SVG objektů</h2>
-                <p>
-                    Nalezení a získání odkazu na SVG elementy jsou jedny z nejpoužívanějších operací při práci s SVG. K hledání SVG elemetů na stránce slouží především funkce <code>SVG.get()</code> a <code>SVG.select()</code>. První z nich, funkce <code>SVG.get()</code>, slouží pro vybírání elementu vytvořeného knihovnou SVG.js na základě atributu <code>id</code>, který je funkci předán jako parametr:
-                </p>
-                <code class="code-snippet">
-                    var element = SVG.get("my_element")
-                </code>
-                <p>
-                    Mnohem zajímavější je druhá zmíněná funkce <code>SVG.select()</code>, která umí hledat SVG elementy pomocí CSS selektorů (více o CSS selektorech se dočtete <a href="https://www.w3schools.com/cssref/css_selectors.asp" target="blank" title="CSS Selectors Reference">zde</a>). Příklad:
-                </p>
-                <code class="code-snippet">
-                    var elements = SVG.select('rect.my-class').fill('#f06')
-                </code>
-                Tento příkaz vyhledá v daném SVG canvasu všechny objekty <code>&lt;rect&gt;</code> se třídou <code>my-class</code> a poté jim nastaví výplň barvy <code>#f06</code>.
-                <p>
-                    Funkci <code>select()</code> také můžeme zavolat na konkrétním elementem, v tomto případě se pak neprohledává celý canvas, ale jen potomci elementu, nad kterým je funkce <code>select()</code> volána.
-                </p>
-                <code class="code-snippet">
-                    var element = SVG.select('#my_rect'); //vybereme objekt se třídou my_rect <br />
-                    var blueChilds = element.select('.blue') //vybereme všechny potomky objektu s id = my_rect, které mají třídu "blue"
-                </code>
-            </article>
-        </section>
-        <section class="tutorial-section" id="krok4">
-            <article>
-                <h2>Manipulace s SVG objekty</h2>
-                <p>
-                    Nastavování hotnot různých atributů objektů v canvasu je další ze základních úkonů, které při práci s SVG provádíme. Nastavení hodnoty jednoho atributu provedeme pomocí funkce <code>attr()</code>:
-                </p>
-                <code class="code-snippet">rect.attr('x', 50)</code>
-                <p>
-                    Můžeme nastavit i více atributů najednou:
-                </p>
-                <code class="code-snippet">
-                    rect.attr({
-                        x: 50, <br />
-                        y: 30, <br />
-                        fill: '#f06', <br />
-                        'fill-opacity': 0.5, <br />
-                        stroke: '#000', <br />
-                        'stroke-width': 10 <br />
-                    })
-                </code>
-                <div class="svg-canvas" id="step4attributes"></div>
-                <p>Atribut můžeme také odstranit:</p>
-                <code class="code-snippet">
-                    rect.attr('fill', null)
-                </code>
-                <p>
-                    V tom případě by předchozí ukázka vypadala takto:
-                </p>
-                <div class="svg-canvas" id="step4removeattr"></div>
-                <p>
-                    V některý situacích můžeme chtít pouze získat hodnotu některého atributu:
-                </p>
-                <code class="code-snippet">
-                    var x = rect.attr('x')
-                </code>
-            </article>
-        </section>
-        <section class="tutorial-section" id="krok5">
-            <article>
-                <h2>Animace</h2>
-                <p>
-                    Animace elementů je velmi podobná manipulaci objektů pomocí funkce <code>attr()</code>. Jediným rozdílem je využití metody <code>animate()</code>. Animovanou změnu výplně objektu provedeme např. takto:
-                </p>
-                <code class="code-snippet">
-                    rect.animate().attr({fill: '#f03'})
-                </code>
-                <p>
-                    Změnu pozice pomocí animace můžeme provést takto:
-                </p>
-                <code class="code-snippet">
-                    rect.animate().attr({x: 100, y:200})<br />
-                    rect.animate().move(100, 200) //metoda move() - zjednodušené pozicování
-                </code>
-                <h2>Události</h2>
-                <p>
-                    Každému elementu můžou být přiřazeny různé události. Základní událostí je <em>kliknutí</em>, které přidáme na objekt pomocí funkce <code>click()</code>. Parametrem t=to funkce je opět funkce, která se vykoná při kliknutí na objekt.
-                </p>
-                <code class="code-snippet">
-                    element.click(function() {<br />
-                        this.fill({color: '#f06'})<br />
-                    })
-                </code>
-                <p>Odstranění události je velmi jednoduché:</p>
-                <code class="code-snippet">
-                    element.click(null)
-                </code>                
-            </article>
-        </section>
-        <section class="tutorial-section" id="test">
-            <article>
-                <h2>Test na závěr</h2>
-            </article>
-        </section>
     </main>
     <footer>
         <p>
-            Toto je patička
+            Kateřina Křížová &copy; 2019
         </p>
     </footer>
     <script src="./js/svg.min.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/krok1.js"></script>
+    <script src="./js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>

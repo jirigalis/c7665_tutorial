@@ -2,7 +2,8 @@
     <head>
         <meta charset="UTF-8">
         <title>C7665 - Tutoriál</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="./css/main.css">
+        <link rel="stylesheet" href="./css/googlecode.css">
     </head>
 <body>
     <header>
@@ -28,13 +29,136 @@
             <li class="active">
                 <a href="./test.html" title="Test">Test</a>
             </li>
+            <li>
+                <a href="./zdroje.html" title="Zdroje">Zdroje</a>
+            </li>
         </ul>
     </nav>
     <main>
         <section class="tutorial-section" id="test">
+            <h2>Test na závěr</h2>
             <article>
-                <h2>Test na závěr</h2>
+                Zaškrtnutím vyberte správné odpovědi na otázky. Správně je vždy právě jedna odpověď, každá otázka je za 2 body, nezodpovězená otázka je za 0 bodů, špatně zodpovězená otázka je za -1 bod.
             </article>
+            <form>
+                <article>
+                    <h3>Otázka č. 1 - Jak vytvoříme SVG dokument knihovny SVG.js?</h3>
+                    <div class="question-option">
+                        <input type="radio" name="q1" value="1" />
+                        <pre><code class="javascript">var draw = SVGJS('drawing').size(300,300)</code></pre>
+                    </div>
+                    <div class="question-option">
+                        <input type="radio" name="q1" value="2">
+                        <pre><code class="javascript">var draw = document.createSVG('drawing').size(300,300)</code></pre>
+                    </div>
+                    <div class="question-option">
+                        <input type="radio" name="q1" value="3">
+                        <pre><code class="javascript">var draw = SVG('drawing').size(300,300)</code></pre>
+                    </div>
+                    <div class="question-option">
+                        <input type="radio" name="q1" value="4">
+                        <pre><code class="javascript">var SVG= draw('drawing').size(300,300)</code></pre>
+                    </div>
+                </article>
+                <article>
+                    <h3>Otázka č. 2 - Jakým způsobem můžeme vykreslit vodorovnou čáru, která má sílu 3 pixely? Předpokládejme, že již máme vytvořený canvas se jménem <code>draw</code>.</h3>
+                    <div class="question-option">
+                        <input type="radio" name="q2" value="1">
+                        <pre><code class="javascript">var line = draw.line(0,0,100, 100).stroke({width: 3})</code></pre>
+                    </div>
+                    <div class="question-option">
+                        <input type="radio" name="q2" value="2">
+                        <pre><code class="javascript">var line = draw.stroke(0,100,100, 100).line({width: 3})</code></pre>
+                    </div>
+                    <div class="question-option">
+                        <input type="radio" name="q2" value="3">
+                        <pre><code class="javascript">var line = draw.line(0,100,100,100).stroke({width: 3})</code></pre>
+                    </div>
+                    <div class="question-option">
+                        <input type="radio" name="q2" value="4">
+                        <pre><code class="javascript">var line = draw.line(0,0,100, 100).width('3px')</code></pre>
+                    </div>
+                </article>
+                <article>
+                    <h3>Otázka č. 3 - Která z uvedených funkcí nepatří mezi základní funkce SVG.js pro vykreslení tvarů?</h3>
+                    <div class="question-option">
+                        <input type="radio" name="q3" value="1"><code>triangle()</code>
+                    </div>
+                    <div class="question-option">
+                        <input type="radio" name="q3" value="2"><code>rect()</code>
+                    </div>
+                    <div class="question-option">
+                        <input type="radio" name="q3" value="3"><code>polygon()</code>
+                    </div>
+                    <div class="question-option">
+                        <input type="radio" name="q3" value="4"><code>path()</code>
+                    </div>
+                </article>
+                <article>
+                    <h3>Otázka č. 4 - Jakým způsobem můžeme získat odkaz na SVG element, který má id "my-element"?</h3>
+                    <div class="question-option">
+                        <input type="radio" name="q4" value="1">
+                        <pre><code class="javascript">var element = document.getElementById('#my-element')</code></pre>
+                    </div>
+                    <div class="question-option">
+                        <input type="radio" name="q4" value="2">
+                        <pre><code class="javascript">var element = SVG.select('#my-element')</code></pre>
+                    </div>
+                    <div class="question-option">
+                        <input type="radio" name="q4" value="3">
+                        <pre><code class="javascript">var element = SVG.getElementById('#my-element')</code></pre>
+                    </div>
+                    <div class="question-option">
+                        <input type="radio" name="q4" value="4">
+                        <pre><code class="javascript">var element = SVG.get('#my-element')</code></pre>
+                    </div>
+                </article>
+                <article>
+                    <h3>Otázka č. 5 - Jak byste u SVG objektu uloženého v proměnné <code>rect</code> odstranili stribut <code>stroke</code>?</h3>
+                    <div class="question-option">
+                        <input type="radio" name="q5" value="1">
+                        <pre><code class="javascript">rect.attr('stroke', null)</code></pre>
+                    </div>
+                    <div class="question-option">
+                        <input type="radio" name="q5" value="2">
+                        <pre><code class="javascript">rect.stroke(null)</code></pre>
+                    </div>
+                    <div class="question-option">
+                        <input type="radio" name="q5" value="3">
+                        <pre><code class="javascript">rect.attr('stroke', 0)</code></pre>
+                    </div>
+                    <div class="question-option">
+                        <input type="radio" name="q5" value="4">
+                        <pre><code class="javascript">rect.removeAttr('stroke')</code></pre>
+                    </div>
+                </article>
+                <article>
+                    <h3>Otázka č. 6 - Vyberte správný zápis animovaného přesunu SVG objektu <code>rect</code> na souřadnice 150, 30.</h3>
+                    <div class="question-option">
+                        <input type="radio" name="q6" value="1">
+                        <pre><code class="javascript">rect.animate().attr({x: 150, y: 30})</code></pre>
+                    </div>
+                    <div class="question-option">
+                        <input type="radio" name="q6" value="2">
+                        <pre><code class="javascript">rect.move(150,30).animate()</code></pre>
+                    </div>
+                    <div class="question-option">
+                        <input type="radio" name="q6" value="3">
+                        <pre><code class="javascript">rect.animate().move(30, 150)</code></pre>
+                    </div>
+                    <div class="question-option">
+                        <input type="radio" name="q6" value="4">
+                        <pre><code class="javascript">rect.animate({x: 150, y: 30}).move()</code></pre>
+                    </div>
+                </article>
+                <article>
+                    <button type="button" class="btn" id="evaluateTestBtn">Vyhodnotit test</button>
+                    <a href="./test.html" >Spustit test znovu</a>
+                </article>
+            </form>
+        </section>
+        <section id="result">
+            <h4>Váš výsledek: <span id="points"></span> b.</h4>
         </section>
     </main>
     <footer>
@@ -43,6 +167,8 @@
         </p>
     </footer>
     <script src="./js/svg.min.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/test.js"></script>
+    <script src="./js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>

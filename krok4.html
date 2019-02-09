@@ -2,7 +2,8 @@
     <head>
         <meta charset="UTF-8">
         <title>C7665 - Tutoriál</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="./css/main.css">
+        <link rel="stylesheet" href="./css/googlecode.css">
     </head>
 <body>
     <header>
@@ -28,6 +29,9 @@
             <li>
                 <a href="./test.html" title="Test">Test</a>
             </li>
+            <li>
+                <a href="./zdroje.html" title="Zdroje">Zdroje</a>
+            </li>
         </ul>
     </nav>
     <main>
@@ -35,27 +39,23 @@
             <article>
                 <h2>Manipulace s SVG objekty</h2>
                 <p>
-                    Nastavování hotnot různých atributů objektů v canvasu je další ze základních úkonů, které při práci s SVG provádíme. Nastavení hodnoty jednoho atributu provedeme pomocí funkce <code>attr()</code>:
+                    Nastavování hodnot různých atributů objektů v canvasu je další ze základních úkonů, které při práci s SVG provádíme. Nastavení hodnoty jednoho atributu provedeme pomocí funkce <code>attr()</code>:
                 </p>
-                <code class="code-snippet">rect.attr('x', 50)</code>
+                <pre><code class="javascript">rect.attr('x', 50)</code></pre>
                 <p>
                     Můžeme nastavit i více atributů najednou:
                 </p>
-                <code class="code-snippet">
-                    rect.attr({
-                        x: 50, <br />
-                        y: 30, <br />
-                        fill: '#f06', <br />
-                        'fill-opacity': 0.5, <br />
-                        stroke: '#000', <br />
-                        'stroke-width': 10 <br />
-                    })
-                </code>
+                <pre><code class="javascript">rect.attr({
+    x: 50,
+    y: 30,
+    fill: '#f06',
+    'fill-opacity': 0.5,
+    stroke: '#000',
+    'stroke-width': 10
+})</code></pre>
                 <div class="svg-canvas" id="step4attributes"></div>
                 <p>Atribut můžeme také odstranit:</p>
-                <code class="code-snippet">
-                    rect.attr('fill', null)
-                </code>
+                <pre><code class="javascript">rect.attr('fill', null)</code></pre>
                 <p>
                     V tom případě by předchozí ukázka vypadala takto:
                 </p>
@@ -63,18 +63,18 @@
                 <p>
                     V některý situacích můžeme chtít pouze získat hodnotu některého atributu:
                 </p>
-                <code class="code-snippet">
-                    var x = rect.attr('x')
-                </code>
+                <pre><code class="javascript">var x = rect.attr('x')</code></pre>
             </article>
         </section>
     </main>
     <footer>
         <p>
-            Toto je patička
+            Kateřina Křížová &copy; 2019
         </p>
     </footer>
     <script src="./js/svg.min.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/krok4.js"></script>
+    <script src="./js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>

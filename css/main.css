@@ -64,7 +64,7 @@ nav .active a, nav li a:hover {
 }
 
 code {
-    background-color: #f5f6f7;
+    background-color: #f5f6f7!important;
 }
 
 .code-snippet {
@@ -86,4 +86,55 @@ footer {
     text-align: center;
     color: #fff;
     font-size: 14px;
+}
+
+.svg-control {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #e1e2e2;
+    color: #999;
+    outline: none;
+}
+
+input[type=text].svg-control, input[type=number].svg-control {
+    width: 70px;
+}
+
+.btn {
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+#animationCanvas {
+    height: 400px;
+}
+
+#test pre, #test code {
+    display: inline;
+}
+
+.question-option {
+    margin-bottom: 5px;
+    padding: 0.2em;
+}
+
+.question-option.correct {
+    background-color: lightgreen;
+}
+
+.question-option.wrong {
+    background-color: lightcoral;
+}
+
+.question-option.correct code, .question-option.wrong code {
+    background-color: inherit !important;
+}
+
+#result {
+    display: none;
+}
+
+#result.visible {
+    display: block;
 }
